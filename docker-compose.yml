@@ -8,9 +8,6 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
 
   frontend:
     build:
