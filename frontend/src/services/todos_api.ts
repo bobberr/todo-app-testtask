@@ -1,8 +1,7 @@
 import axios from 'axios';
 import type { Todo } from '../types/todo';
 
-const API_URL =
-  import.meta.env.VITE_API_URL || 'http://localhost:3000/api/todos';
+const API_URL = import.meta.env.VITE_API_URL + '/todos';
 
 export const getTodos = async (): Promise<Todo[]> => {
   const res = await axios.get(API_URL);

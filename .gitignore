@@ -7,12 +7,12 @@ build/
 npm-debug.log*
 
 # Env
-.env
 .env.local
 
 # Editor
 .vscode/
 
 # Prisma
-dev.db       
+dev.db      
+*generated 
 *.db-journal
