@@ -12,7 +12,6 @@ npm-debug.log*
 # Editor
 .vscode/
 
-# Prisma
-dev.db      
+# Prisma   
 *generated 
 *.db-journal
