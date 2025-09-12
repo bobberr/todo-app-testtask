@@ -20,13 +20,17 @@ export const TodoListItem = ({
       onChange={onToggle}
       className="form-checkbox mr-5 h-7 w-7 rounded"
     />
-    <div className="mr-5 w-full truncate" onClick={() => setActiveId(todo.id)}>
+    <div
+      className="w-full cursor-pointer truncate pr-3 transition-colors hover:text-blue-400"
+      onClick={() => setActiveId(todo.id)}
+    >
       <span
         style={{ textDecoration: todo.isDone ? 'line-through' : 'none' }}
         className="max-w-20"
       >
         {todo.title}
       </span>
+      <p className="truncate text-xs">{todo.comment}</p>
     </div>
     <button onClick={onDelete}>Delete</button>
   </div>

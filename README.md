@@ -24,3 +24,11 @@ docker-compose up
 ```
 
 3. Open http://localhost:5173 to test the application
+
+## Testing
+
+For end-to-end back-end testing enter backend directory and run:
+
+```bash
+npm run test:e2e
+```
