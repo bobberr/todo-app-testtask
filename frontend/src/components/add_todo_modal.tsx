@@ -26,6 +26,15 @@ export const TodoModal = ({
     setIsError(false);
   };
 
+  const handleSubmit = async () => {
+    try {
+      await handleAdd(title, comment);
+      resetForm();
+    } catch (e) {
+      setIsError(true);
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
       <div className="w-96 rounded-lg bg-white p-6 shadow-xl">
@@ -35,13 +44,8 @@ export const TodoModal = ({
 
         <form
           onSubmit={async (e) => {
-            try {
-              e.preventDefault();
-              await handleAdd(title, comment);
-              resetForm();
-            } catch (e) {
-              setIsError(true);
-            }
+            e.preventDefault();
+            await handleSubmit();
           }}
           className="space-y-4"
         >

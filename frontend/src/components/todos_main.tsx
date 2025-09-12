@@ -14,8 +14,17 @@ export const TodoMain = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [activeId, setActiveId] = useState<number | null>(null);
+  const [isError, setIsError] = useState(false);
 
-  const fetchTodos = async () => setTodos(await getTodos());
+  const fetchTodos = async () => {
+    try {
+      const fetchedTodos = await getTodos();
+      setTodos(fetchedTodos);
+      setIsError(false);
+    } catch (e) {
+      setIsError(true);
+    }
+  };
 
   const activeTodo = useMemo(() => {
     return todos.find((todo) => todo.id === activeId);
@@ -52,12 +61,17 @@ export const TodoMain = () => {
     <div>
       <div className="flex h-screen flex-col items-center">
         <h1 className="py-20 text-3xl uppercase">Todo Test App</h1>
-        <TodosList
-          todos={todos}
-          onToggle={handleToggle}
-          onDelete={handleDelete}
-          setActiveId={setActiveId}
-        />
+        {isError ? (
+          <p className="mb-10 text-red-500">Something went wrong.</p>
+        ) : (
+          <TodosList
+            todos={todos}
+            onToggle={handleToggle}
+            onDelete={handleDelete}
+            setActiveId={setActiveId}
+          />
+        )}
+
         <TodoFooter setIsOpen={setIsAddOpen} />
         {isAddOpen && (
           <TodoModal setIsOpen={setIsAddOpen} handleAdd={handleAdd} />
