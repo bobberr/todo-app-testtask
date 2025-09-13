@@ -32,3 +32,21 @@ For end-to-end back-end testing enter backend directory and run:
 ```bash
 npm run test:e2e
 ```
+
+## Separate API Usage
+
+Todos API is available without front-end part via address:
+
+```bash
+http://localhost:3000/api/todos
+```
+
+Available routes:
+
+```bash
+GET /todos - fetches all todos
+GET /todos/:id - fetch specific todo by id
+POST /todos - create todo {title: string, comment?: string}
+PUT /todos/:id - update specific todo by id {title?: string, comment?: string, isDone?: boolean}
+DELETE /todos/:id - remove specific todo by id
+```
